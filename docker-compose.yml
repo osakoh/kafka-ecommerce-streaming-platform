@@ -24,9 +24,6 @@ services:
     depends_on:
       zookeeper:
         condition: service_healthy
-#    ports:
-#      - "29092:29092"
-#      - "9091:9091"
     ports:
       - "9092:9092"
       - "9101:9101"
@@ -48,6 +45,28 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
+  # http://localhost:9021 to open
+  control-center: # Define a service named 'control-center'
+    image: confluentinc/cp-enterprise-control-center:7.6.0  # Use the specified Docker image for the service
+    hostname: control-center  # Set the hostname of the container
+    container_name: control-center  # Specify the name of the container
+    depends_on: # Specify dependencies for the service
+      - broker  # This service depends on the 'broker' service
+    ports: # Expose ports for the service
+      - "9021:9021"  # Map port 9021 on the host to port 9021 in the container
+    environment: # Define environment variables for the service
+      CONTROL_CENTER_BOOTSTRAP_SERVERS: 'broker:9092'  # Set the Kafka bootstrap servers
+      CONTROL_CENTER_REPLICATION_FACTOR: 1  # Set the replication factor for internal topics
+      CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS: 1  # Set the number of partitions for internal topics
+      CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 1  # Set the number of partitions for monitoring interceptor topic
+      CONFLUENT_METRICS_TOPIC_REPLICATION: 1  # Set the replication factor for Confluent metrics topic
+      PORT: 9021  # Set the port number for Control Center web UI
+      #      CONTROL_CENTER_KSQL_KSQLDB1_URL: "http://ksqldb-server:8088"
+      #      CONTROL_CENTER_KSQL_KSQLDB1_ADVERTISED_URL: "http://localhost:8088"
+      #      CONTROL_CENTER_SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
+
+
 
   postgres:
     image: postgres:latest
