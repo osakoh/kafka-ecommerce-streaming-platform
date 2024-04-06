@@ -74,6 +74,10 @@ doc/_build/
 # PyBuilder
 target/
 
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
 # Jupyter Notebook
 .ipynb_checkpoints
 
@@ -138,7 +142,6 @@ cython_debug/
 
 # Kafka-related (customize as needed)
 logs/
-*.log
 data/
 *.dat
 
@@ -156,3 +159,24 @@ data/
 # local
 skip/
 utils/config.py
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### Mac OS ###
+.DS_Store
