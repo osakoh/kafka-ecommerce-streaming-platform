@@ -79,9 +79,10 @@ def main():
             # Waiting for 5 seconds before sending the next transaction
             time.sleep(5)
 
+        # error due to producer
         except BufferError:
             # Handling buffer full exception
-            print("Buffer full! Waiting...")
+            print("Buffer full! Waiting to retry ...")
             # wait 1 sec before retrying to send the next transaction again, allowing some time for the buffer
             # to clear up before retrying to send the message.
             time.sleep(1)
@@ -91,5 +92,5 @@ def main():
 
 
 if __name__ == "__main__":
-    # Executing main function if the script is run directly
+    # execut main function if script is ran directly
     main()
