@@ -41,15 +41,14 @@ def delivery_report(err, msg):
         print(f'Message delivery failed: {err}')
 
 
+# Main function
 def main():
-    # Main function
     topic = 'financial_transactions'  # Kafka topic name
+
+    # create Kafka producer object
     producer = SerializingProducer({
         'bootstrap.servers': 'localhost:9092'  # Kafka broker address
-    })  # Creating a Kafka producer object
-
-    # curr_time = datetime.now()  # Getting the current time
-    # while (datetime.now() - curr_time).seconds < 120:
+    })
 
     start_time = time.time()  # returns the current time in seconds
 
@@ -92,5 +91,5 @@ def main():
 
 
 if __name__ == "__main__":
-    # execut main function if script is ran directly
+    # execute main function if script is ran directly
     main()
