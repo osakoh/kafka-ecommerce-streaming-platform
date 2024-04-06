@@ -35,10 +35,10 @@ def delivery_report(err, msg):
     """ Function to handle delivery report of Kafka messages """
     if err is None:
         # If successful(not error), print the message delivered information
-        print(f"Message delivered to {msg.topic} [{msg.partition()}]")
+        print(f"Message delivered to {msg.topic} [{msg.partition()}]\n")
     else:
         # If there's an error, print the message delivery failure
-        print(f'Message delivery failed: {err}')
+        print(f'Message delivery failed: {err}\n')
 
 
 # Main function

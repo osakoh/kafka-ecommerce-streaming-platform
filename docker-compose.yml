@@ -48,7 +48,7 @@ services:
 
   # http://localhost:9021 to open
   control-center: # Define a service named 'control-center'
-    image: confluentinc/cp-enterprise-control-center:7.6.0  # Use the specified Docker image for the service
+    image: confluentinc/cp-enterprise-control-center:7.4.0  # Use the specified Docker image for the service
     hostname: control-center  # Set the hostname of the container
     container_name: control-center  # Specify the name of the container
     depends_on: # Specify dependencies for the service
