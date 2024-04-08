@@ -40,6 +40,7 @@ def consume_messages(topic, start_from_latest=True):
     }
 
     consumer = Consumer(conf)
+
     consumer.subscribe([topic])  # Subscribe to the specified topic
 
     try:

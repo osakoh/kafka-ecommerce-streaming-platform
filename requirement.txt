@@ -1,5 +1,10 @@
+certifi==2024.2.2
 confluent-kafka==2.3.0
+elastic-transport==8.13.0
+elasticsearch==8.13.0
 Faker==20.1.0
+psycopg2-binary==2.9.9
 python-dateutil==2.8.2
 simplejson==3.19.2
 six==1.16.0
+urllib3==2.2.1
