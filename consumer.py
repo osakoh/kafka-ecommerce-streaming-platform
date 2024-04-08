@@ -60,8 +60,11 @@ def consume_messages(topic, start_from_latest=True):
                 # Message successfully consumed
                 print(f"Received message: {msg.value().decode('utf-8')}")
 
-    except KeyboardInterrupt:
-        # Graceful shutdown on Ctrl+C
+    except AttributeError as e:
+        print(f"Error: {e}")
+
+    except KeyboardInterrupt as e:
+        print(f"\nUser pressed [Ctrl + C]: {e}")
         pass
 
     finally:
