@@ -57,8 +57,9 @@ def consume_messages(topic, start_from_latest=True):
                     print(f"Error: {msg.error()}")
                     break
             else:
+                print(f"type(msg.value(): {type(msg.value())}")
                 # Message successfully consumed
-                print(f"Received message: {msg.value().decode('utf-8')}")
+                print(f"Received message: {msg.value().decode('utf-8')}\n")
 
     except AttributeError as e:
         print(f"Error: {e}")
