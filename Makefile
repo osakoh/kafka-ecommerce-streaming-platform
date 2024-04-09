@@ -1,3 +1,6 @@
+c:
+	docker ps
+
 build:
 	docker compose up --build --remove-orphans
 
@@ -6,6 +9,9 @@ up:
 
 down:
 	docker compose down
+
+consume:
+	docker exec -it broker kafka-console-consumer --bootstrap-server broker:9092 --topic $(call args,"financial_transactions") --from-beginning
 
 down-v:
 		docker compose down -v
@@ -22,7 +28,7 @@ logs:
 args = `arg="$(filter-out $@,$(MAKECMDGOALS))" && echo $${arg:-${1}}`
 
 restart:
-	docker compose restart $(call args,defaultstring)
+	docker compose restart $(call args, "broker")
 
 
 restart-all:
